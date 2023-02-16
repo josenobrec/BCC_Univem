@@ -1,0 +1,19 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class ControlePonto{
+	public void registraEntrada(Funcionario f){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date agora = new Date();
+		System.out.println("Entrada: " +f.getMatricula()+ " - "+f.getNome());
+		System.out.println("Data: " +sdf.format(agora));
+	}
+	public void registraSaida(Funcionario f){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date agora = new Date();
+		System.out.println("Saida: " +f.getMatricula()+ " - "+f.getNome());
+		System.out.println("Data: " +sdf.format(agora));
+		
+	}
+	
+}
