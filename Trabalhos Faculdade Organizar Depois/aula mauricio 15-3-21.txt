@@ -1,0 +1,235 @@
+parte 1
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int * Aloca(int n)
+{
+	int *p;
+	
+	p = (int *)calloc(n,sizeof(int));
+	
+	return p;
+}
+
+void leitura(int *a, int n)
+{
+	int i;
+	printf("Digite as %d idades:", n);
+	
+	// for i in range(0,n):
+	for (i=0; i<n; i++)
+	    scanf("%d", &a[i] ); // ou &a[i] == (a+i)
+	
+}
+
+parte 2
+
+void imprime(int *a, int n)
+{
+	int i;
+	printf("[ ");
+	for (i=0; i<n; i++)
+	   printf("%d ", a[i]);   // ou a[i] == *(a+i)
+    
+	printf("]\n"); 
+}
+
+
+
+main()
+{
+	int *v;   // v será minha lista de idades
+	int tam;  // qtd de idades a serem inseridas
+	
+	printf("Digite a quantidade de idades: ");
+	scanf("%d", &tam);
+	
+	v = Aloca(tam);
+	
+	leitura (v, tam);
+	
+	imprime (v, tam);
+	
+	
+}
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int * Aloca(int n)
+{
+	int *p;
+	
+	p = (int *)calloc(n,sizeof(int));
+	
+	return p;
+}
+
+void leitura(int *a, int n)
+{
+	int i;
+	printf("Digite as %d idades:\n", n);
+	
+	// for i in range(0,n):
+	for (i=0; i<n; i++)
+	    scanf("%d", &a[i] ); // ou &a[i] == (a+i)
+	
+}
+
+
+main()
+{
+	int *v;   // v será minha lista de idades
+	int tam;  // qtd de idades a serem inseridas
+	
+	int mv;
+	
+	float med;
+	
+	printf("Digite a quantidade de idades: ");
+	scanf("%d", &tam);
+	
+	v = Aloca(tam);
+	
+	leitura (v, tam);
+	
+	imprime (v, tam);
+	
+	med = media (v, tam);
+	
+	printf("\nMedia das idades: %.2f", med);
+	
+	mv = mais_velho(v, tam);
+	
+	printf("\nMais velho tem %d anos", mv);
+	
+	
+}
+
+void imprime(int *a, int n)
+{
+	int i;
+	printf("[ ");
+	for (i=0; i<n; i++)
+	   printf("%d ", a[i]);   // ou a[i] == *(a+i)
+    
+	printf("]\n"); 
+}
+
+
+float media(int *a, int n)
+{
+	int i;
+	float soma=0;
+	
+	for (i=0; i<n; i++)
+	    soma += a[i];   // soma += *(a+i)
+	
+	
+	return soma/n;
+	
+}
+
+int mais_velho(int *a, int n)
+{
+	int i, mv = 0;
+	
+	for (i=0; i<n; i++)
+	    if (a[i]> mv)   // if ( *(a+i) > mv)
+	       	mv = a[i];
+		 
+	return mv;
+	
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct dados 
+{
+	char nome[30];
+	float n1;
+	float n2;
+};
+
+typedef dados No;
+
+
+int ins_fim(No *L, int *f, No a)
+{
+	L[ *f ] = a;
+	(*f)++;
+}
+
+
+void imprime(No *L, int f)
+{
+	int i;
+	
+	for (i=0; i<f; i++)
+	{
+		printf("\nNome....: %s", L[i].nome);
+		printf("\nNota 1..: %.2f", L[i].n1);
+		printf("\nNota 2..: %.2f\n", L[i].n2);
+	}
+}
+
+main()
+{
+	No Lista[10]; // criando uma lista capaz de armazenar
+	              // 10 nós --> 10 alunos
+	              
+	int fim = 0; // fim --> controla o fim da lista
+	int op;
+	
+	No aluno;
+	
+	do 
+	{
+		system("cls"); // limpa a tela
+		puts("1 - Inserir no Fim da Lista");
+		puts("2 - Imprimir a Lista");
+		
+		puts("0 - Sair do programa!");
+		
+		printf("Digite a opcao: ");
+		scanf("%d", &op);
+
+	switch(op)
+		{
+			case 1: printf("Digite o nome do aluno: ");
+			        fflush(stdin);
+					gets(aluno.nome);
+					printf("Digite a nota 1:");
+					scanf("%f", &aluno.n1);
+					printf("Digite a nota 2:");
+					scanf("%f", &aluno.n2);
+					
+					if (ins_fim(Lista, &fim, aluno))
+					    printf("Insercao com sucesso!");
+					else
+					    printf("Lista cheia!");
+					
+					break;
+					 
+			
+			        	
+Mauricio Duarte22:27
+
+			case 2: if (fim == 0)
+			            printf("Lista Vazia!");
+			        else
+			        {
+			        	printf("\nLista:\n");
+			        	imprime(Lista, fim);
+			        	
+					}
+					system("pause");
+					break;
+		
+		}
+		
+	} while (op!=0);
+}
