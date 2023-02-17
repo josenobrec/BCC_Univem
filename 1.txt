@@ -1,0 +1,9 @@
+def expa(n,exp):
+    if exp < 2:
+        return n
+    else:
+        return expa(n,exp-1) * n
+        
+
+print(expa(4,3))
+
